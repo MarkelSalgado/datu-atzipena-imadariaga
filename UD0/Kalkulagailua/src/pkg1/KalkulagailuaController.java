@@ -20,21 +20,42 @@ import javafx.scene.control.TextField;
 public class KalkulagailuaController implements Initializable {
     
     @FXML
-    private Label batuketa, biderketa;
+    private Label emaitza;
     
     @FXML
-    private TextField batugai1,batugai2,biderkagai1,biderkagai2;
+    private TextField batugai1,batugai2;
     
     @FXML
-    private void handleBatuAction(ActionEvent event) {
+    private void gehiketa(ActionEvent event) {
         System.out.println("Batuketa egin dugu.");
-        batuketa.setText(""+(Double.parseDouble(batugai1.getText())+Double.parseDouble(batugai2.getText())));
+        emaitza.setText(""+(Double.parseDouble(batugai1.getText())+Double.parseDouble(batugai2.getText())));
     }
 
     @FXML
-    private void handleBiderkatuAction(ActionEvent event) {
+    private void kenketa(ActionEvent event) {
+        System.out.println("Kenketa egin dugu.");
+        emaitza.setText(""+(Double.parseDouble(batugai1.getText()) - Double.parseDouble(batugai2.getText())));
+    }
+     @FXML
+    private void biderketa(ActionEvent event) {
         System.out.println("Biderketa egin dugu.");
-        biderketa.setText(""+(Double.parseDouble(biderkagai1.getText()) * Double.parseDouble(biderkagai2.getText())));
+        emaitza.setText(""+(Double.parseDouble(batugai1.getText()) * Double.parseDouble(batugai2.getText())));
+    }
+    
+     @FXML
+    private void zatiketa(ActionEvent event) {
+        System.out.println("Zatiketa egin dugu.");
+        emaitza.setText(""+(Double.parseDouble(batugai1.getText()) / Double.parseDouble(batugai2.getText())));
+    }
+    
+    @FXML
+    private void berreketa(ActionEvent event) {
+        double berreketaEmaitza=Double.parseDouble(batugai1.getText());
+        System.out.println("Berreketa egin dugu.");
+        for(int i=0; i< Double.parseDouble(batugai2.getText())-1;i++){
+        berreketaEmaitza=berreketaEmaitza* Double.parseDouble(batugai1.getText());  
+    }
+        emaitza.setText(""+berreketaEmaitza);
     }
     
     @Override
